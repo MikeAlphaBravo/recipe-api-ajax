@@ -1,8 +1,8 @@
 export class Recipe {
 
-  search2(ingredient) {
+  search2(ingredient, apiKey) {
     $.ajax({
-      url: `http://food2fork.com/api/search?key=e9aad402e839456c4a04ef32990d2622${ingredient}`,
+      url: `http://food2fork.com/api/search?key=${apiKey}${ingredient}`,
       type: 'GET',
       data: {
         format: 'json'
