@@ -17,14 +17,16 @@ export class Recipe {
 
     promise.then(function(response) {
       let readable = JSON.parse(response);
-      let recipes = [];
-      // (readable.bikes).forEach(function(bike) {
-      //   if (bike.date_stolen > LastWeek) {
-      //     bikesLastWeek.push(bike);
-        // }
-      // });
-      $("#output").html(`<h2>Title: ${readable.recipes[0].title}</h2>
-                         <a target="_blank" href="${readable.recipes[0].source_url}"><img src="${readable.recipes[0].image_url}" /></a>`);
+      let recipeInfo = [];
+      (readable.recipes).forEach(function(recipe) {
+        if((recipe.title).includes('Cheese')) {
+          recipeInfo.push(recipe);
+        }
+      });
+      (recipeInfo).forEach(function(recipeFilter) {
+        $("#output").append(`<h2>Title: ${recipeFilter.title}</h2>
+          <a target="_blank" href="${recipeFilter.source_url}"><img src="${recipeFilter.image_url}" /></a>`);
+      });
     }, function(error) {
       $("#output").text(`There was an error processing your request: ${error.message}`);
     });
