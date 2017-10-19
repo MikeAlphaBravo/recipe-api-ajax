@@ -7,6 +7,7 @@ $(document).ready(function() {
     $('#output').text('');
     let ingredient = $('#ingredient').val();
     let recipe = new Recipe();
-    recipe.apiCall(`&q=${ingredient}`);
+    let userin = `&q=${ingredient}`;
+    recipe.search2(userin);
   });
 });
